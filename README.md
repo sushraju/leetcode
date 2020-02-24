@@ -1,2 +1,2 @@
 # leetcode
-leetcode stuff
+leetcode stuff for some of the python and other stuff
