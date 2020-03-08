@@ -2,35 +2,26 @@
 import sys
 
 
-def main(expr):
+def isValid(expr: str) -> bool:
+    pairs = {'(': ')', '[': ']', '{': '}'}
     s = []
-    for i in range(0, len(expr)):
-        if expr[i] == '(' or expr[i] == '{' or expr[i] == '[':
-            s.append(expr[i])
-            continue
 
-        if expr[i] == ')':
-            m = s.pop()
-            if m == '{' or m == '[':
-                print(expr + ' is _not_ Balanced')
-                sys.exit(0)
+    for char in expr:
+        if char in pairs.keys():
+            s.append(char)
+        elif len(s) > 0 and pairs.get(s[-1]) == char:
+            s.pop()
+        else:
+            return False
 
-        if expr[i] == '}':
-            m = s.pop()
-            if m == '(' or m == '[':
-                print(expr + ' is _not_ Balanced')
-                sys.exit(0)
+    return len(s) == 0
 
-        if expr[i] == ']':
-            m = s.pop()
-            if m == '(' or m == '{':
-                print(expr + ' is _not_ Balanced')
-                sys.exit(0)
 
-    if len(s):
-        print(expr + ' is _not_ Balanced')
+def main(expr):
+    if isValid(expr):
+        print("This is a balanced expression")
     else:
-        print(expr + ' is Balanced')
+        print("This is not a balanced expression")
 
 
 if __name__ == "__main__":
