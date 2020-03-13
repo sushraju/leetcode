@@ -26,6 +26,14 @@ class LinkedList(object):
             yield current
             current = current.next_node
 
+    def __len__(self):
+        current = self.head
+        length = 0
+        while current:
+            length += 1
+            current = current.next_node
+        return length
+
     def __str__(self):
         values = [str(x) for x in self]
         return ' -> '.join(values)
@@ -53,6 +61,8 @@ class TestCases(unittest.TestCase):
         ll.add(2)
         ll.add(3)
         self.assertFalse(ll is None)
+        self.assertTrue(len(ll) == 2, "Length was checked")
+        self.assertEquals(len(ll), 2)
 
     def test_add_to_beginning(self):
         ll = LinkedList()
@@ -60,6 +70,7 @@ class TestCases(unittest.TestCase):
         ll.add(3)
         ll.add_to_beginning(1)
         self.assertFalse(ll is None)
+        self.assertEquals(len(ll), 3)
 
 
 if __name__ == "__main__":
