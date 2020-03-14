@@ -2,7 +2,7 @@
 import argparse
 import sys
 
-LOG_LEVELS = ["DEBUG", "INFO", "WARN", "ERROR", "FATAL"]
+LOG_LEVELS = ["FATAL", "ERROR", "WARN", "INFO", "DEBUG"]
 
 
 def log(log_level_str, text):
@@ -17,8 +17,8 @@ def main(argv):
     _min_l_level_num = 0
     _max_l_level_num = 4
 
-    print(LOG_LEVELS)
-    print('Initial default log level is ' + _def_l_level)
+    print('\nLog levels in increasing order of verbosity: ' + str(LOG_LEVELS))
+    print('\nInitial default log level is set to ' + _def_l_level + '\n')
 
     parser = argparse.ArgumentParser()
     parser.add_argument(
@@ -35,18 +35,19 @@ def main(argv):
     )
 
     args = parser.parse_args(argv[1:])
-    for log_level in args.log_level:
-        _def_l_level_num = _def_l_level_num + log_level
+    if args.log_level is not None:
+        for log_level in args.log_level:
+            _def_l_level_num = _def_l_level_num + log_level
 
-    if _def_l_level_num < _min_l_level_num:
-        _def_l_level_num = _min_l_level_num
+        if _def_l_level_num < _min_l_level_num:
+            _def_l_level_num = _min_l_level_num
 
-    if _def_l_level_num > _max_l_level_num:
-        _def_l_level_num = _max_l_level_num
+        if _def_l_level_num > _max_l_level_num:
+            _def_l_level_num = _max_l_level_num
 
     _def_l_level = LOG_LEVELS[_def_l_level_num]
 
-    print('Current default log level is ' + _def_l_level)
+    print('Modified log verbosity to ' + _def_l_level + ' per args. Logging ' + _def_l_level + ' and lower.\n')
 
     # test log levels
     log('DEBUG', "This is DEBUG message")

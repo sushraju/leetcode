@@ -31,9 +31,10 @@ def init(argv):
     _min_l_level_num = 0
     _max_l_level_num = 4
 
+    print('Initial default log level is set to ' + _def_l_level + '\n')
     if len(argv) > 0:
         try:
-            print('Initial default log level is ' + _def_l_level)
+
             for arg in argv:
                 if arg == '-h':
                     usage()
@@ -57,15 +58,13 @@ def init(argv):
             usage()
             sys.exit(1)
     else:
-        usage()
-        sys.exit(1)
-
+        print("\nNo arguments passed, continuing...\n")
 
 def main(argv):
     init(argv)
 
     # test logs
-    print('Current default log level is ' + _def_l_level)
+    print('Modified log verbosity to ' + _def_l_level + ' per args.  Logging anything ' + _def_l_level + ' and higher\n')
     log('DEBUG', "This is DEBUG message")
     log('INFO', "This is INFO message")
     log('WARN', "This is WARN message")
