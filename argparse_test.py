@@ -4,7 +4,8 @@ import sys
 
 LOG_LEVELS = ["FATAL", "ERROR", "WARN", "INFO", "DEBUG"]
 
-
+# log messages of severity default log level and lower
+# for e.g., if set to WARN, messages of type WARN, ERROR and FATAL will be logged.
 def log(log_level_str, text):
     if LOG_LEVELS.index(log_level_str) <= LOG_LEVELS.index(_def_l_level):
         print(text)
