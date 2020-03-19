@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import sys
+import unittest
 
 
 def isValid(expr: str) -> bool:
@@ -17,12 +18,12 @@ def isValid(expr: str) -> bool:
     return len(s) == 0
 
 
-def main(expr):
-    if isValid(expr):
-        print("This is a balanced expression")
-    else:
-        print("This is not a balanced expression")
+class TestCases(unittest.TestCase):
+
+    def test_match(self):
+        self.assertTrue(isValid('([{}])'))
+        self.assertFalse(isValid('({)}'))
 
 
 if __name__ == "__main__":
-    main('([{}])')
+    unittest.main()
