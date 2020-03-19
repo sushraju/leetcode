@@ -6,22 +6,25 @@ class TwoSum(object):
         self.nums = nums
 
     def two_sum(self, target):
-        a = 0
-        b = 0
-        for i in range(0, len(self.nums) - 1):
-            if (self.nums[i] + self.nums[i + 1]) == target:
-                a = i
-                b = i + 1
+        s = set()
+        for i in self.nums:
+            print(s)
+            if (target - i) in s:
+                return True
 
-        return a, b
+            s.add(i)
+
+        return False
 
 
 def main():
     nums = [2, 3, 4, 5, 6, 7, 9]
-    target = 26
-    a, b = TwoSum(nums).two_sum(target)
-    print(a, b)
+    target = 11
 
+    if TwoSum(nums).two_sum(target):
+        print(str(target) + ' present in ' + str(nums) + ' as a sum.')
+    else:
+        print(str(target) + ' not present in ' + str(nums) + ' as a sum.')
 
 if __name__ == "__main__":
     main()
