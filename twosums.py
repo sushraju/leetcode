@@ -9,9 +9,9 @@ class TwoSum(object):
         a = 0
         b = 0
         for i in range(0, len(self.nums) - 1):
-           if (self.nums[i] + self.nums[i + 1]) == target:
-              a = i
-              b = i + 1
+            if (self.nums[i] + self.nums[i + 1]) == target:
+                a = i
+                b = i + 1
 
         return a, b
 
