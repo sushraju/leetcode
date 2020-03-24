@@ -41,6 +41,29 @@ class FileNameHash(object):
 
 class HashFileTest(unittest.TestCase):
 
+    # $ ls -lRt test
+    # total 40
+    # -rw-r--r--  1 suresh  staff    9 Mar 24 13:55 l
+    # drwxr-xr-x  8 suresh  staff  256 Mar 24 11:25 test1
+    # -rw-r--r--  1 suresh  staff   21 Mar 23 16:50 c.txt
+    # -rw-r--r--  1 suresh  staff   21 Mar 23 16:50 d.txt
+    # -rw-r--r--  1 suresh  staff   12 Mar 23 16:50 b.txt
+    # -rw-r--r--  1 suresh  staff   12 Mar 23 16:50 a
+    #
+    # test/test1:
+    # total 40
+    # drwxr-xr-x  4 suresh  staff  128 Mar 23 17:39 test2
+    # -rw-r--r--  1 suresh  staff   12 Mar 23 16:50 c
+    # -rw-r--r--  1 suresh  staff   12 Mar 23 16:50 w
+    # -rw-r--r--  1 suresh  staff   12 Mar 23 16:50 x
+    # -rw-r--r--  1 suresh  staff   12 Mar 23 16:50 y
+    # -rw-r--r--  1 suresh  staff   12 Mar 23 16:50 z
+    #
+    # test/test1/test2:
+    # total 16
+    # -rw-r--r--  1 suresh  staff  21 Mar 23 17:39 f
+    # -rw-r--r--  1 suresh  staff  12 Mar 23 17:39 e
+
     def test_simple_traverse(self):
         fn_hash = FileNameHash("test")
         print("\n" + self._testMethodName)
