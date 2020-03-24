@@ -45,14 +45,14 @@ class HashFileTest(unittest.TestCase):
         fn_hash = FileNameHash("test")
         print("\n" + self._testMethodName)
         for k,v in fn_hash.hash_file_names.items():
-            print(v)
+            print(k + ':' + str(v))
         self.assertTrue(len(fn_hash.hash_file_names), 2)
 
     def test_second_degree(self):
         fn_hash = FileNameHash("test/test1")
         print(self._testMethodName)
         for k,v in fn_hash.hash_file_names.items():
-            print(v)
+            print(k + ':' + str(v))
         self.assertTrue(len(fn_hash.hash_file_names), 2)
 
 
