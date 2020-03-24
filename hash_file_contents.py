@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import os
 import hashlib
+import unittest
 from collections import defaultdict
 
 
@@ -41,5 +42,14 @@ def main(path):
         print(v)
 
 
+class HashFileTest(unittest.TestCase):
+
+    def test_simple_traverse(self):
+        main("test")
+
+    def test_second_traverse(self):
+        main("test/test1")
+
+
 if __name__ == "__main__":
-    main("test")
+    unittest.main()
