@@ -38,6 +38,12 @@ class FileNameHash(object):
                 result = str(hashlib.md5(file_contents.encode()).hexdigest())
                 self.hash_file_names[result].append(self.all_files[i])
 
+    def identical_files(self):
+        print("List of identical files:")
+        for k,v in self.hash_file_names.items():
+            if len(v) > 1:
+                print(v)
+
 
 class HashFileTest(unittest.TestCase):
 
@@ -65,18 +71,16 @@ class HashFileTest(unittest.TestCase):
     # -rw-r--r--  1 zaphod  staff  12 Mar 23 17:39 e
 
     def test_simple_traverse(self):
-        fn_hash = FileNameHash("test")
+        fn_hash1 = FileNameHash("test")
         print("\n" + self._testMethodName)
-        for k,v in fn_hash.hash_file_names.items():
-            print(k + ':' + str(v))
-        self.assertTrue(len(fn_hash.hash_file_names), 2)
+        fn_hash1.identical_files()
+        self.assertTrue(len(fn_hash1.hash_file_names), 3)
 
     def test_second_degree(self):
-        fn_hash = FileNameHash("test/test1")
+        fn_hash2 = FileNameHash("test/test1")
         print(self._testMethodName)
-        for k,v in fn_hash.hash_file_names.items():
-            print(k + ':' + str(v))
-        self.assertTrue(len(fn_hash.hash_file_names), 2)
+        fn_hash2.identical_files()
+        self.assertTrue(len(fn_hash2.hash_file_names), 2)
 
 
 if __name__ == "__main__":
