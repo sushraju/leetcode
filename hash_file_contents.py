@@ -42,7 +42,7 @@ class FileNameHash(object):
         print("List of identical files:")
         for k,v in self.hash_file_names.items():
             if len(v) > 1:
-                print(v)
+                print(k + ':' + str(v))
 
 
 class HashFileTest(unittest.TestCase):
