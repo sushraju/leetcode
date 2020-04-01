@@ -35,7 +35,7 @@ class FileNameHash(object):
             with open(self.all_files[i], "r") as fd:
                 file_contents = fd.read()
                 fd.close()
-                result = str(hashlib.md5(file_contents.encode()).hexdigest())
+                result = hashlib.md5(file_contents.encode()).hexdigest()
                 self.hash_file_names[result].append(self.all_files[i])
 
     def identical_files(self):

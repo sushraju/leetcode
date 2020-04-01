@@ -4,6 +4,7 @@ import sys
 
 LOG_LEVELS = ["FATAL", "ERROR", "WARN", "INFO", "DEBUG"]
 
+
 # log messages of severity default log level and lower
 # for e.g., if set to WARN, messages of type WARN, ERROR and FATAL will be logged.
 def log(log_level_str, text):
