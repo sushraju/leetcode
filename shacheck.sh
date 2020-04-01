@@ -21,19 +21,19 @@ ret=$?
 if [[ ${ret} != 0 ]]
 then
    echo "error: Cannot download $SHAFILE_DOWNLOAD_LOC" | tee $LOG_FILE
-   echo "Provide the correct URL." | tee -a $LOG_FILE
+   echo "usage: $0 <url>" | tee -a $LOG_FILE
    exit 255
 else
    echo ''
    echo "Downloaded $SHAFILE_DOWNLOAD_LOC. Proceeding to process it..." | tee $LOG_FILE
 fi
 
-# read file line by line.  
+# read each line from file to process
 # split line into shasum and filename to download
-# download the file, get the shasum - compare and log.
+# download the file, get the shasum, compare and log.
 
-echo "Reading contents from $SHAFILE_DOWNLOAD_LOC..." | tee -a $LOG_FILE
 DOWNLOAD_LOC=`echo ${SHAFILE_DOWNLOAD_LOC%/*}`/zips
+echo "Reading contents from $SHAFILE_DOWNLOAD_LOC..." | tee -a $LOG_FILE
 echo "Download location for individual files is $DOWNLOAD_LOC" | tee -a $LOG_FILE
 echo '' | tee -a $LOG_FILE
 
