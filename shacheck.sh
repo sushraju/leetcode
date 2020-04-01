@@ -15,7 +15,7 @@ then
 fi
 
 # defs
-FILE_LOC_DIR=/Users/suresh/mine/labs/optimizely/long
+FILE_LOC_DIR=$PWD/long
 LOG_FILE=$PWD/shacheck.log
 DOWNLOAD_LOC=https://webdelivery-interview.s3.amazonaws.com/public/archives/zips
 SHASUM_CMD=/usr/bin/shasum
