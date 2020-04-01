@@ -9,11 +9,6 @@ else
    SHAFILE_DOWNLOAD_LOC=$1
 fi
 
-if [[ $SHAFILE_DOWNLOAD_LOC == '' ]]
-then
-   SHAFILE_DOWNLOAD_LOC=https://webdelivery-interview.s3.amazonaws.com/public/archives/SHA1SUMS.10 
-fi
-
 # defs
 FILE_LOC_DIR=$PWD/long
 LOG_FILE=$PWD/shacheck.log
