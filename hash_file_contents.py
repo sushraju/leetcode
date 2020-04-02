@@ -1,14 +1,18 @@
-#!/usr/bin/env python
+"""
+# This script builds a dictionary of identical files in a directory (and nested contents)
+"""
+# !/usr/bin/env python
 import os
 import hashlib
 import unittest
 from collections import defaultdict
 
 
-# This script builds a dictionary of identical files in a directory (and nested contents)
-
-class FileNameHash(object):
-
+class FileNameHash():
+    """
+    # Class builds a dictionary of using the hash(file's contents) as key
+    # and the filename as a list of values.
+    """
     def __init__(self, path):
         self.path = path
         self.all_files = None
@@ -18,35 +22,39 @@ class FileNameHash(object):
 
     # Find the files in a directory.  The worst case complexity is O(N^2), which is not great.
     def find_files(self, path):
+        """Traverse the directory of files and other directories recursively and build a list"""
+
         if self.all_files is None:
             self.all_files = []
         dir_list = os.listdir(path)
-        for fn in dir_list:
-            if os.path.isfile(path + "/" + fn):
-                self.all_files.append(path + "/" + fn)
-            elif os.path.isdir(path + "/" + fn):
-                self.find_files(path + "/" + fn)
+        for f_name in dir_list:
+            if os.path.isfile(path + "/" + f_name):
+                self.all_files.append(path + "/" + f_name)
+            elif os.path.isdir(path + "/" + f_name):
+                self.find_files(path + "/" + f_name)
             else:
                 continue
 
     def build_file_names_hash(self):
+        """Build the dict using the hash(file's contents) as key and filenames as values"""
         self.hash_file_names = defaultdict(list)
         for i in range(len(self.all_files)):
-            with open(self.all_files[i], "r") as fd:
-                file_contents = fd.read()
-                fd.close()
+            with open(self.all_files[i], "r") as f_desc:
+                file_contents = f_desc.read()
+                f_desc.close()
                 result = hashlib.md5(file_contents.encode()).hexdigest()
                 self.hash_file_names[result].append(self.all_files[i])
 
     def identical_files(self):
+        """Print out values which have a length>1, indicates duplicates."""
         print("List of identical files:")
-        for k,v in self.hash_file_names.items():
-            if len(v) > 1:
-                print(k + ':' + str(v))
+        for key, val in self.hash_file_names.items():
+            if len(val) > 1:
+                print(key + ':' + str(val))
 
 
 class HashFileTest(unittest.TestCase):
-
+    """Unit tests to test the functionality of using hashes to compare files"""
     # $ ls -lRt test
     # total 40
     # -rw-r--r--  1 zaphod  staff    9 Mar 24 13:55 l
@@ -71,12 +79,14 @@ class HashFileTest(unittest.TestCase):
     # -rw-r--r--  1 zaphod  staff  12 Mar 23 17:39 e
 
     def test_simple_traverse(self):
+        """Test a simple case of a top level directory"""
         fn_hash1 = FileNameHash("test")
         print("\n" + self._testMethodName)
         fn_hash1.identical_files()
         self.assertTrue(len(fn_hash1.hash_file_names), 3)
 
     def test_second_degree(self):
+        """Test second or third degree of directories for completeness"""
         fn_hash2 = FileNameHash("test/test1")
         print(self._testMethodName)
         fn_hash2.identical_files()
