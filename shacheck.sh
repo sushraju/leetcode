@@ -41,7 +41,7 @@ while read line
 do
    read_shasum=`echo $line | cut -f1 -d' '`
    filename=`echo $line | cut -f2 -d' ' | cut -f2 -d'/'`
-   curl -s $DOWNLOAD_LOC/$filename -o $FILE_LOC_DIR/$filename
+   curl -s "$DOWNLOAD_LOC"/"$filename" -o "$FILE_LOC_DIR"/"$filename"
    ret=$?
    if [[ ${ret} != 0 ]]
    then
@@ -58,4 +58,4 @@ do
          echo "$FILE_LOC_DIR/$filename is not a valid download." | tee -a $LOG_FILE
       fi 
    fi
-done < $FILE_LOC_DIR/$SHASUM_FILE
+done < "$FILE_LOC_DIR"/$SHASUM_FILE
