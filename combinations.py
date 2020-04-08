@@ -29,7 +29,7 @@ def target_sum_combinations(unique_set, target_sum):
     :param target_sum: Target sum of the tuples in the unique_set
     :return: none
     """
-    print("\nAll unique combinations with a target sum of %d" % target_sum)
+    print("\nAll unique combinations of length %d with a target sum of %d" % (len(min(unique_set)), target_sum))
     for combo in unique_set:
         if sum(combo) == target_sum:
             print(combo, sum(combo))
@@ -42,6 +42,12 @@ def main():
     """
     unique_set = unique_combinations([-1, 0, 1, 2, -1, 2], 3)
     target_sum_combinations(unique_set, 2)
+
+    # output
+    # $ python combinations.py
+    #
+    # All unique combinations of length 3 with a target sum of 2
+    # (-1, 1, 2) 2
 
 
 if __name__ == "__main__":
