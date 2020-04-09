@@ -6,7 +6,9 @@ Moving Averages with a specific window size.
 
 
 class MovingAverages():
-
+    """
+    Moving Averages with a specific window size.
+    """
     def __init__(self, window_size):
         """
         Initialize values with window size and set the insert_position to 0
@@ -41,19 +43,24 @@ class MovingAverages():
         for i in range(self._insert_position):
             sum_values = sum_values + self._values[i]
 
-        if sum_values == 0:
-            return mov_avg
-        else:
+        if sum_values > 0:
             mov_avg = sum_values / self._insert_position
-            return mov_avg
+
+        return mov_avg
 
     def get_values(self):
+        """
+        getters, returns the values list
+        :return:
+        """
         return self._values
 
 
 def main():
-
-    # driver code
+    """
+    Driver code
+    :return:
+    """
     mov_avg = MovingAverages(6)
     value_list = [23, 45, 34, 56, 78, 98, 9, 90, 45, 18, 99]
 
