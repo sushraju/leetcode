@@ -59,8 +59,20 @@ def main():
 
     for value in value_list:
         mov_avg.add_value(value)
-        print(mov_avg.get_values(), mov_avg.get_average())
+        print(mov_avg.get_values(), "%.2f" % mov_avg.get_average())
 
+    # values and the moving average.
+    # [23, 0, 0, 0, 0, 0] 23.00
+    # [23, 45, 0, 0, 0, 0] 34.00
+    # [23, 45, 34, 0, 0, 0] 34.00
+    # [23, 45, 34, 56, 0, 0] 39.50
+    # [23, 45, 34, 56, 78, 0] 47.20
+    # [23, 45, 34, 56, 78, 98] 55.67
+    # [45, 34, 56, 78, 98, 9] 53.33
+    # [34, 56, 78, 98, 9, 90] 60.83
+    # [56, 78, 98, 9, 90, 45] 62.67
+    # [78, 98, 9, 90, 45, 18] 56.33
+    # [98, 9, 90, 45, 18, 99] 59.83
 
 if __name__ == "__main__":
     main()
