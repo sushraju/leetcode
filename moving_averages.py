@@ -29,7 +29,7 @@ class MovingAverages():
             self._values[self._insert_position] = value
             self._insert_position += 1
         else:
-            del self._values[0]
+            self._values.pop(0)
             self._values.append(value)
 
     def get_average(self):
