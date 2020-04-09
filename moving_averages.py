@@ -1,0 +1,66 @@
+#!/usr/bin/env python
+
+"""
+Moving Averages with a specific window size.
+"""
+
+
+class MovingAverages():
+
+    def __init__(self, window_size):
+        """
+        Initialize values with window size and set the insert_position to 0
+        :param window_size:
+        """
+        self._window_size = window_size
+        self._values = [0] * window_size
+        self._insert_position = 0
+
+    def add_value(self, value):
+        """
+        Add the value to the values list and increment the position until the window gets filled
+        After that drop the first and append to the end.
+        :param value:
+        :return:
+        """
+        if self._insert_position < self._window_size:
+            self._values[self._insert_position] = value
+            self._insert_position += 1
+        else:
+            del self._values[0]
+            self._values.append(value)
+
+    def get_average(self):
+        """
+        Returns the moving average using the sum and insert position.
+        Once the window gets filled, the insert position is always same as the window size
+        :return:
+        """
+        sum_values = 0
+        mov_avg = 0.0
+        for i in range(self._insert_position):
+            sum_values = sum_values + self._values[i]
+
+        if sum_values == 0:
+            return mov_avg
+        else:
+            mov_avg = sum_values / self._insert_position
+            return mov_avg
+
+    def get_values(self):
+        return self._values
+
+
+def main():
+
+    # driver code
+    mov_avg = MovingAverages(6)
+    value_list = [23, 45, 34, 56, 78, 98, 9, 90, 45, 18, 99]
+
+    for value in value_list:
+        mov_avg.add_value(value)
+        print(mov_avg.get_values(), mov_avg.get_average())
+
+
+if __name__ == "__main__":
+    main()
