@@ -19,7 +19,7 @@ def combonumpad(a, b):
          for i in range(0,len(numpad[a])):
             for j in range(0,len(numpad[b])):
                 combo = numpad[a][i] + numpad[b][j]
-                print combo
+                print(combo)
  
 def main():
    combonumpad(2,9)

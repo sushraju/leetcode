@@ -17,7 +17,8 @@ class NumStuff(object):
    def has_dupe(self):
       hasdupe = False
       sorted_nums = sorted(self.nums)
-      print sorted_nums
+      print(sorted_nums)
+      print(sorted_nums)
       for i in range(0,len(sorted_nums)-1):
          if (sorted_nums[i] == sorted_nums[i+1]):
             hasdupe = True
@@ -37,9 +38,9 @@ def main():
    numstuff = NumStuff(nums)
    print (numstuff.two_sum(target))
    if numstuff.has_dupe():
-      print " has dupes"
+      print(" has dupes")
    else:
-      print " has no dupes"
+      print(" has no dupes")
 
    print (numstuff.max())
 
