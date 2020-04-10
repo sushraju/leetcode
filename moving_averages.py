@@ -14,6 +14,8 @@ class MovingAverages():
         Initialize values with window size and set the insert_position to 0
         :param window_size:
         """
+        assert (window_size > 0), "Window size should be > 0 !!!"
+        
         self._window_size = window_size
         self._values = [0] * window_size
         self._insert_position = 0
