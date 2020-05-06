@@ -3,7 +3,6 @@
 
 def first_duplicate(my_list):
     for index in my_list:
-        print(my_list[abs(index) - 1])
         if my_list[abs(index) - 1] < 0:
             return abs(index)
         else:
@@ -16,7 +15,7 @@ def main():
     Driver code
     :return:
     """
-    nums = [1, 2, 3, 3, 2, 1]
+    nums = [1, 2, 3, 2, 3, 1]
     print(first_duplicate(nums))
 
 
