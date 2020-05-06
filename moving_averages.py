@@ -9,13 +9,14 @@ class MovingAverages():
     """
     Moving Averages with a specific window size.
     """
+
     def __init__(self, window_size):
         """
         Initialize values with window size and set the insert_position to 0
         :param window_size:
         """
         assert (window_size > 0), "Window size should be > 0 !!!"
-        
+
         self._window_size = window_size
         self._values = [0] * window_size
         self._insert_position = 0
@@ -45,7 +46,7 @@ class MovingAverages():
         for i in range(self._insert_position):
             sum_values = sum_values + self._values[i]
 
-        if sum_values > 0:
+        if sum_values > 0 and self._insert_position > 0:
             mov_avg = sum_values / self._insert_position
 
         return mov_avg
@@ -94,6 +95,7 @@ def main():
     # [110, 100, 92, 81, 77, 73] 88.83
     # [100, 92, 81, 77, 73, 69] 82.00
     # [92, 81, 77, 73, 69, 85] 79.50
+
 
 if __name__ == "__main__":
     main()
