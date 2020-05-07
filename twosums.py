@@ -18,6 +18,10 @@ class TwoSum(object):
 
 
 def main():
+    """
+    Driver code
+    :return:
+    """
     nums = [2, 3, 4, 5, 6, 7, 9]
     target = 11
 
@@ -25,6 +29,7 @@ def main():
         print(str(target) + ' present in ' + str(nums) + ' as a sum.')
     else:
         print(str(target) + ' not present in ' + str(nums) + ' as a sum.')
+
 
 if __name__ == "__main__":
     main()
