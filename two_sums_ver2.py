@@ -23,7 +23,7 @@ class TwoSum():
         pairs = set()
         for i in self.nums:
 
-            if str(target - i) not in lookup_d:
+            if str(target - i) in lookup_d:
                 pairs.add((i, (target - i)))
 
             lookup_d[str(i)] = i
