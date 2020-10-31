@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 
-def find_singles(nums):
+def find_non_dupes(nums):
 
     num_dict = {}
     single_nums = set()
@@ -22,7 +22,7 @@ def main():
     :return:
     """
     nums = [1, 2, 4, 3, 5, 4, 1, 2]
-    print(find_singles(nums))
+    print(find_non_dupes(nums))
 
 
 if __name__ == "__main__":
