@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+
 def log_restrict(source_fd, max_files, max_size, prefix):
     """Reads and writes to log files based on max bytes read"""
     line = source_fd.readline(max_size)
