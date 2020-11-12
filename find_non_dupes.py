@@ -1,17 +1,5 @@
 #!/usr/bin/env python
 
-def trampoline(f):
-    def wrapped(*args):
-        res = f(*args)
-        print(res, *args)
-        while hasattr(res, '__call__'):
-            print("unwrapping...")
-            res = res()
-        return res
-
-    return wrapped
-
-@trampoline
 def find_non_dupes(nums):
 
     num_dict = {}
