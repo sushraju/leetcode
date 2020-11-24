@@ -15,7 +15,7 @@ def find_pouch_size(max_num_coins):
         10: 9
     }
 
-    for i in range(1, max_num_coins):
+    for i in range(19, max_num_coins, 10):  # incrementing by 10 starting 19
         found = True
         for k, v in mod_dict.items():
             if i % k != v:
@@ -27,7 +27,7 @@ def find_pouch_size(max_num_coins):
 
 
 def main():
-    find_pouch_size(3500)
+    find_pouch_size(10000)
 
 
 if __name__ == "__main__":
