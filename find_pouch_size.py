@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-# Solution to https://twitter.com/UntangleIndia/status/13310784837709168640
+# Solution to https://twitter.com/UntangleIndia/status/1331078483770916864
 
 def find_pouch_size(max_num_coins):
     mod_dict = {
