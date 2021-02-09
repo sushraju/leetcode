@@ -24,6 +24,7 @@ def poem_log(source_fd, max_files, max_lines, prefix):
             op.truncate(0)
             op.write(line)
             line_count = 1
+            
         line = source_fd.readline()
 
 
