@@ -22,7 +22,7 @@ class NewRank(Rank):
 
     def rank(self, pros):
         self.pros = pros
-        return [1,4,5,6,7,8,2,3]
+        return [1,4,5,6,2,3]
     
 class QualityRank(Rank):
     def __init__(self):
@@ -52,13 +52,14 @@ class SlidingWindowRank(Rank):
             rank_name = self.window[window_len]
             pro = self.rank_map[rank_name].rank(pros)[rank_ctr_map[rank_name]]
             if pro in ranked_pros_list:
-                while pro in ranked_pros_list:
+                while pro in ranked_pros_list and rank_ctr_map[rank_name]+1 < len(self.rank_map[rank_name].rank(pros)):
                     pro = self.rank_map[rank_name].rank(pros)[rank_ctr_map[rank_name]]
-                    rank_ctr_map[rank_name] += 1
+                    if rank_ctr_map[rank_name]+1 < len(self.rank_map[rank_name].rank(pros)):
+                        rank_ctr_map[rank_name] += 1
             else:
-                ranked_pros_list.append(pro)
                 rank_ctr_map[rank_name] += 1
 
+            ranked_pros_list.append(pro)
             window_len += 1
            
         return ranked_pros_list
