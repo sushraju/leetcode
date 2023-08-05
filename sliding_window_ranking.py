@@ -45,7 +45,7 @@ class SlidingWindowRank(Rank):
         for k in self.rank_map:
             rank_ctr_map[k] = 0
     
-        for i in range(len(self.pros)):
+        while len(ranked_pros_list) < len(self.pros):
             if window_len == len(self.window):
                 window_len = 0
             
@@ -56,10 +56,13 @@ class SlidingWindowRank(Rank):
                     pro = self.rank_map[rank_name].rank(pros)[rank_ctr_map[rank_name]]
                     if rank_ctr_map[rank_name]+1 < len(self.rank_map[rank_name].rank(pros)):
                         rank_ctr_map[rank_name] += 1
+                if pro not in ranked_pros_list:
+                    ranked_pros_list.append(pro)
             else:
                 rank_ctr_map[rank_name] += 1
+                ranked_pros_list.append(pro)
 
-            ranked_pros_list.append(pro)
+            
             window_len += 1
            
         return ranked_pros_list
@@ -70,7 +73,7 @@ def main():
     new_rank = NewRank()
     quality_rank = QualityRank()
 
-    window = ["Base", "New", "Base", "Quality"]
+    window = ["Base", "New", "Base", "Quality", "New", "Base"]
     rank_map = {
         "Base": base_rank,
         "New": new_rank,
