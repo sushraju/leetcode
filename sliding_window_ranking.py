@@ -1,6 +1,6 @@
 
 
-class Rank():
+class Rank(object):
     def __init__(self):
         self.pros = None
 
