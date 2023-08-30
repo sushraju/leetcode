@@ -64,7 +64,7 @@ def main():
         ["CREATE_COURSE", "CSE100", "Computer Science Fundamentals", "6"],
         ["CREATE_COURSE", "CSE150", "Data Structures", "10"],
         ["CREATE_COURSE", "CSE200", "Artificial Intelligence", "12"],
-        ["CREATE_COURSE", "CSE250", "Machine Learning Fundamentals", "10"],
+        ["CREATE_COURSE", "CSE50", "Machine Learning Fundamentals", "10"],
         ["REGISTER_FOR_COURSE", "st001", "CSE100"],
         ["REGISTER_FOR_COURSE", "st002", "CSE150"],
         ["GET_STUDENT_PAIRS"],
