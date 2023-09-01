@@ -68,13 +68,13 @@ class RoundRobinIterator(ListIterator):
 
 def main():
     list_iter = ListIterator([1,2,3,4,5])
-    round_robin_iter = RoundRobinIterator([ListIterator([0,1,2]),ListIterator([3,4,5,6]),ListIterator([7,8])])
+    round_robin_iter = RoundRobinIterator([ListIterator([0,1,2]),ListIterator([3,4,5,6]),ListIterator([8,9,10,12,14,15])])
 
     print("This is the output of the ListIterator:")
     while list_iter.has_next():
         print(list_iter.next())
 
-    print("\nThis is the output of the RoundRobin ListIterator:")
+    print("\nThis is the output of the Round-Robin ListIterator:")
     while round_robin_iter.has_next():
         print(round_robin_iter.next())
 
