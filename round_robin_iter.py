@@ -25,6 +25,15 @@ class ListIterator(object):
         self.list_len = len(self.our_list)
         self.curr_ind = 0
 
+    def __str__(self):
+        str_res = None
+        for i in self.our_list:
+            if str_res is None:
+                str_res = str(i)
+            else:
+                str_res = str_res + ',' + str(i)
+        return str_res
+
     def has_next(self):
         if self.curr_ind < self.list_len:
             return True
@@ -44,22 +53,17 @@ class RoundRobinIterator(ListIterator):
         self.curr_ind = 0
 
     def has_next(self):
-        if self.curr_ind < self.list_len:
-            if self.list_iterators[self.curr_ind].has_next():
-                return True
-            else:
-                self.curr_ind = 0
+        if self.curr_ind < self.list_len and self.list_iterators[self.curr_ind].has_next():
+            return True
         else:
             self.curr_ind = 0
-        
-        while self.curr_ind < self.list_len:
-            if self.list_iterators[self.curr_ind].has_next():
-                return True
-            else:
-                self.curr_ind += 1
-        return False
+            while self.curr_ind < self.list_len:
+                if self.list_iterators[self.curr_ind].has_next():
+                    return True
+                else:
+                    self.curr_ind += 1
+            return False
 
-    
     def next(self):
         if self.curr_ind < self.list_len:
             curr_element = self.list_iterators[self.curr_ind].next()
@@ -68,7 +72,7 @@ class RoundRobinIterator(ListIterator):
 
 def main():
     list_iter = ListIterator([1,2,3,4,5])
-    round_robin_iter = RoundRobinIterator([ListIterator([0,1,2]),ListIterator([3,4,5,6]),ListIterator([8,9,10,12,14,15])])
+    round_robin_iter = RoundRobinIterator([ListIterator([0]),ListIterator([3,4,5,6]),ListIterator([8,9,10,12,14,15])])
 
     print("This is the output of the ListIterator:")
     while list_iter.has_next():
