@@ -9,10 +9,14 @@ d_starts = [2, 3, 5, 7]
 d_ends = [6, 5, 10, 11]
 d_pays = [5, 2, 4, 3]
 
+Expected pay: 6
+
 test case 2
 d_starts = [2, 3, 5, 2]
 d_ends = [6, 5, 10, 4]
-d_pays = [5, 2, 4, 6]
+d_pays = [5, 2, 4, 3]
+
+Expected pay: 7
 
 Calculcate maximum moolah
 '''
