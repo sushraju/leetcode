@@ -1,17 +1,18 @@
 #!/usr/bin/env python
 
-def stair_climb(n,m):
+def stair_climb(n,m=3):
     if n <= 1:
         return n
     res = 0
     i = 1
+    print(n, m)
     while i<=m and i<=n:
-        res = res + count_ways(n-i, m)
+        res = res + stair_climb(n-i, m)
         i = i + 1
     return res
 
-def main(stairs,jump=3):
-    print ("Number of climbing " + str(n) + " stairs = " + str(count_ways(stairs+1, jump)))
+def main(stairs):
+    print ("Number of climbing " + str(stairs) + " stairs = " + str(stair_climb(stairs+1)))
 
 if __name__ == "__main__":
-   main(4,3)
+   main(3)

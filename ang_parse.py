@@ -4,7 +4,7 @@ def main(str):
 
    left_ctr=0
    right_ctr=0
-   print 'Original string: ' + str
+   print('Original string: ' + str)
 
    for i in range(0,len(str)):
       if str[i] == '<':
@@ -18,7 +18,7 @@ def main(str):
    for k in range(0,right_ctr):
       str = '<' + str
 
-   print 'Modified string: ' + str
+   print('Modified string: ' + str)
 
 if __name__ == "__main__":
    main("><<><")
