@@ -21,7 +21,7 @@ def calc_max_pay(start_time, end_time, d_starts, d_ends, d_pays):
     curr_max_pay = 0
     max_pay = 0
     for i in range(0, len(d_starts)):
-        curr_max_pay += d_pays[i]
+        curr_max_pay = d_pays[i]
         for k in range(0, len(d_starts)):
             if i != k:
                 if d_starts[k] > d_starts[i] and d_starts[k] >= d_ends[i] and d_ends[k] <= end_time and d_starts[k] >= start_time:
@@ -29,8 +29,6 @@ def calc_max_pay(start_time, end_time, d_starts, d_ends, d_pays):
 
         if curr_max_pay > max_pay:
             max_pay = curr_max_pay
-        
-        curr_max_pay = 0
             
     return max_pay
 
