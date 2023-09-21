@@ -37,7 +37,6 @@ def solution(queries):
             if q[1]:
                 if q[1] in in_mem_db.keys():
                     temp_query_resp = ''
-
                     for k,v in in_mem_db[q[1]].items():
                         if temp_query_resp:
                             temp_query_resp += ', ' + k +"(" + v + ')'
@@ -76,7 +75,9 @@ def main():
             ["SET","dept4","fifth","5"], 
             ["SCAN_BY_PREFIX","dept4","fi"], 
             ["GET","dept4","first"], 
-            ["SCAN_BY_PREFIX","dept4","sec"]
+            ["SCAN_BY_PREFIX","dept4","sec"],
+            ["SCAN","dept4"],
+            ["SCAN","dept3"],
         ]
     
     print(solution(queries))
