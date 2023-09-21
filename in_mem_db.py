@@ -10,9 +10,9 @@ def solution(queries):
         if q[0] == "SET":
             if q[1] and q[2] and q[3]:
                 if q[1] in in_mem_db.keys():
-                    in_mem_db[q[1]].update({ q[2]: q[3]})
+                    in_mem_db[q[1]].update({q[2]: q[3]})
                 else:
-                    in_mem_db[q[1]] = { q[2]: q[3]}
+                    in_mem_db[q[1]] = {q[2]: q[3]}
                 query_resp.append("")
         elif q[0] == "GET":
             if q[1] and q[2]:
@@ -61,7 +61,6 @@ def solution(queries):
                     query_resp.append(quot + temp_query_resp + quot)
                 else:
                     query_resp.append("")
-        
         else:
             continue
             
