@@ -39,9 +39,9 @@ def solution(queries):
                     temp_query_resp = ''
                     for k,v in in_mem_db[q[1]].items():
                         if temp_query_resp:
-                            temp_query_resp += ', ' + k +"(" + v + ')'
+                            temp_query_resp += ', ' + k + '(' + v + ')'
                         else:
-                            temp_query_resp += k +"(" + v + ')'
+                            temp_query_resp += k + '(' + v + ')'
 
                     query_resp.append(quot + temp_query_resp + quot)
                 else:
@@ -54,16 +54,16 @@ def solution(queries):
                     for k,v in in_mem_db[q[1]].items():
                         if re.match(scan_pattern, k):
                             if temp_query_resp:
-                                temp_query_resp += ', ' + k +"(" + v + ')'
+                                temp_query_resp += ', ' + k + '(' + v + ')'
                             else:
-                                temp_query_resp += k +"(" + v + ')'
+                                temp_query_resp += k + '(' + v + ')'
     
                     query_resp.append(quot + temp_query_resp + quot)
                 else:
                     query_resp.append("")
         else:
             continue
-            
+
     return query_resp
 
 def main():
@@ -72,11 +72,14 @@ def main():
             ["SET","dept4","first","1"], 
             ["SET","dept4","second","2"], 
             ["SET","dept4","fifth","5"], 
+            ["SET","dept2","sixth","5"], 
+            ["SET","dept3","third","3"], 
             ["SCAN_BY_PREFIX","dept4","fi"], 
             ["GET","dept4","first"], 
             ["SCAN_BY_PREFIX","dept4","sec"],
             ["SCAN","dept4"],
-            ["SCAN","dept3"],
+            ["SCAN","dept2"],
+            ["GET","dept3","third"],
         ]
     
     print(solution(queries))
